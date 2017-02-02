@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Filtering, sorting and searching</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body class="gradient-pattern">
+    <div id="wrapper" style="text-align: center">
+        <button id="previous">Previous</button> Showing # to # of # <button id="next">Next</button>
+        <table>
+            <h1>Top 250 movies of all time</h1>
+            <input id="search" type='search' placeholder='Search Movies'>
+            <thead>
+                <th><button class="button1" id="title">Title</button></th>
+                <th><button id="year">Year</button></th>
+                <th><button>Rating</button></th>
+                <th><button>Poster</button></th>
+            </thead>
+            <tbody id="myTable"></tbody>
+        </table>
+    </div>
+        <script src="script.js"></script>
+</body>
+
+</html>
