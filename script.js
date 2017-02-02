@@ -15,6 +15,7 @@ let pageNumber = 1;
 let movies = [];
 let filterMovies = [];
 
+let titleAz = false;
 
 let removeRows = function (moviesContainer) {
     moviesContainer.html('');
@@ -63,29 +64,70 @@ $(() => {
     })
 
     $('#title').on('click', () => {
-        movies.sort(function (a, b) {
-            if (a.title < b.title) return -1;
-            if (a.title > b.title) return 1;
-            return a.title[1] - b.title[1];
-        });
+        if (!titleAz) {
+            titleAz = true;
+            movies.sort(function (a, b) {
+                if (a.title < b.title) return -1;
+                if (a.title > b.title) return 1;
+                return a.title[1] - b.title[1];
+            });
+        } else {
+            titleAz = false;
+            movies.sort(function (a, b) {
+                if (a.title < b.title) return 1;
+                if (a.title > b.title) return -1;
+                return a.title[1] - b.title[1];
+            });
+        }
         displayPage(pageNumber, pageSize, filterMovies, moviesContainer);
     })
 
     $('#year').on('click', () => {
-        movies.sort(function (a, b) {
-            if (a.year < b.year) return -1;
-            if (a.year > b.year) return 1;
-            return a.year[1] - b.year[1];
-        });
+        if (!titleAz) {
+            titleAz = true;
+            movies.sort(function (a, b) {
+                if (a.year < b.year) return -1;
+                if (a.year > b.year) return 1;
+                return a.year[1] - b.year[1];
+            });
+        } else {
+            titleAz = false;
+            movies.sort(function (a, b) {
+                if (a.year < b.year) return 1;
+                if (a.year > b.year) return -1;
+                return a.year[1] - b.year[1];
+            });
+        }
         displayPage(pageNumber, pageSize, filterMovies, moviesContainer);
     })
 
     $('#rating').on('click', () => {
-        movies.sort(function (a, b) {
-            if (a.rating < b.rating) return -1;
-            if (a.rating > b.rating) return 1;
-            return a.rating[1] - b.rating[1];
-        });
+        if (!titleAz) {
+            titleAz = true;
+            movies.sort(function (a, b) {
+                return a.rating - b.rating
+            });
+        } else {
+            titleAz = false;
+            movies.sort(function (a, b) {
+                return b.rating - a.rating
+            });
+        }
+        displayPage(pageNumber, pageSize, filterMovies, moviesContainer);
+    })
+
+    $('#rank').on('click', () => {
+        if (!titleAz) {
+            titleAz = true;
+            movies.sort(function (a, b) {
+                return a.rank - b.rank;
+            });
+        } else {
+            titleAz = false;
+            movies.sort(function (a, b) {
+                return b.rank - a.rank;
+            });
+        }
         displayPage(pageNumber, pageSize, filterMovies, moviesContainer);
     })
 
